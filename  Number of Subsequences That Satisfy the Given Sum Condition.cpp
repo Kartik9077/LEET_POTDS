@@ -1,5 +1,5 @@
-class Solution {
-    public:
+#include<bits/stdc++.h>
+        using namespace std;
     const int mod=1e9+7;
         int numSubseq(vector<int>& nums, int target) {
             
@@ -22,4 +22,14 @@ class Solution {
     
             return ans;
         }
-    };
+        
+        int main()
+        {  int n;
+            cin>>n;
+            vector<int>arr(n);
+            for(int i=0;i<n;i++)cin>>arr[i];
+            int target ;
+            cin>>target;
+            int ans=numSubseq(arr,target);
+        return 0;
+        }
