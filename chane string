@@ -1,0 +1,33 @@
+class Solution {
+    public:
+    bool check(string s,string k){
+        int x=min(s.size(),k.size());
+            for(int i=0;i<x;i++){
+                if(s[i]!=k[i])return 0;
+            }
+            return x==k.size();
+    }
+    static bool comp(pair<int,pair<string,string>>&a,pair<int,pair<string,string>>&b){
+        return a.first<b.first;
+    }
+        string findReplaceString(string s, vector<int>& indices, vector<string>& sources, vector<string>& targets) {
+           vector<pair<int,pair<string,string>>>ans;
+           for(int i=0;i<indices.size();i++){
+            ans.push_back({indices[i],{sources[i],targets[i]}});
+           }
+           sort(ans.begin(),ans.end(),comp);
+           string res;int j=0;
+           for(int i=0;i<ans.size();i++){
+            int idx=ans[i].first;
+            if(idx<j)continue;
+            while(j!=idx)res+=s[j++];
+            string k=ans[i].second.first;
+            if(check(s.substr(j),k)){
+                res+=ans[i].second.second;
+                j+=k.length();
+            }
+           }
+           while(j!=s.size())res+=s[j++];
+           return res;
+        }
+    };
