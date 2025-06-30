@@ -1,0 +1,24 @@
+class Solution {
+public:
+static bool comp(vector<int>&a,vector<int>&b){
+    return a[0]<b[0];
+}
+    vector<int> findRightInterval(vector<vector<int>>& in) {
+        unordered_map<int,int>mpp;int i=0;
+        for(auto it:in){
+            mpp[it[0]]=i;i++;
+        }
+        sort(in.begin(),in.end(),comp);
+        vector<int>ans(in.size(),0);
+        for(int i=0;i<in.size();i++){
+            bool k=0;
+            for(int j=i;j<in.size();j++){
+                if(in[j][0]>=in[i][1])
+                {ans[mpp[in[i][0]]]=mpp[in[j][0]];k=1;break;}
+            }
+            if(k==0)ans[mpp[in[i][0]]]=-1;
+        }
+    return ans;
+    }
+
+};
