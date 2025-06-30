@@ -40,3 +40,6 @@ class Solution {
             return backtrack(num, 0, store, 0);
         }
     };
+    int main(){
+        // main function 
+    }

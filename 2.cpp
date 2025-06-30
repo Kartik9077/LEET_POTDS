@@ -2,7 +2,6 @@
         using namespace std;
     const int mod=1e9+7;
         int numSubseq(vector<int>& nums, int target) {
-            
             sort(nums.begin(), nums.end());
             int n = nums.size(), ans = 0;
             vector<int> pow(n);
@@ -31,5 +30,6 @@
             int target ;
             cin>>target;
             int ans=numSubseq(arr,target);
+            cout<<ans;
         return 0;
         }
